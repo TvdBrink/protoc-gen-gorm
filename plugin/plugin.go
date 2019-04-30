@@ -14,7 +14,7 @@ import (
 
 	"log"
 
-	"github.com/infobloxopen/protoc-gen-gorm/options"
+	"github.com/TvdBrink/protoc-gen-gorm/options"
 )
 
 const (
