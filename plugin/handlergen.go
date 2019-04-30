@@ -708,7 +708,8 @@ func (p *OrmPlugin) generateStrictUpdateHandler(message *generator.Descriptor) {
 			count = `count = `
 			rowsAffected = `.RowsAffected`
 		}
-		p.P(count+`db.Model(&ormObj).Set("gorm:query_option", "FOR UPDATE").Where("`, column, `=?", ormObj.`, pkName, `).First(lockedRow)`+rowsAffected)
+		// p.P(count+`db.Model(&ormObj).Set("gorm:query_option", "FOR UPDATE").Where("`, column, `=?", ormObj.`, pkName, `).First(lockedRow)`+rowsAffected)
+		p.P(count+`db.Model(&ormObj).Where("`, column, `=?", ormObj.`, pkName, `).First(lockedRow)`+rowsAffected)
 	}
 	p.generateBeforeHookCall(ormable, "StrictUpdateCleanup")
 	p.removeChildAssociations(message)
